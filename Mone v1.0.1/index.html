@@ -612,6 +612,19 @@
 		<script src="assets/js/scroll-animations.js"></script>
 		<script src="assets/js/section-transitions.js"></script>
 		<script src="assets/js/scroll-reveal.js"></script>
-		<script src="assets/js/cursor.js"></script>
+		<script src="assets/js/service-text-fix.js"></script>
+		
+		<script>
+			// Simple fix: Disable the counter animation
+			document.addEventListener('DOMContentLoaded', function() {
+				// Find and remove the observer for counter elements
+				var observerScript = Array.from(document.scripts).find(script => 
+					script.innerText && script.innerText.includes('counterElements.forEach'));
+					
+				if (observerScript) {
+					observerScript.remove();
+				}
+			});
+		</script>
 	</body>
 </html>

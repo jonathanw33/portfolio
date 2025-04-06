@@ -77,51 +77,5 @@ function initScrollAnimations() {
     });
   });
   
-  // Add counting animation to experience numbers
-  const counterElements = document.querySelectorAll('.fw-light.display-4');
-  
-  function animateCounter(element) {
-    const target = parseFloat(element.textContent);
-    let current = 0;
-    const increment = target / 40; // Divide by number of frames
-    
-    function updateCount() {
-      if (current < target) {
-        current += increment;
-        if (current > target) current = target;
-        
-        // Display with appropriate formatting
-        if (Number.isInteger(target)) {
-          element.textContent = Math.floor(current) + '+';
-        } else {
-          element.textContent = current.toFixed(1) + '+';
-        }
-        
-        requestAnimationFrame(updateCount);
-      }
-    }
-    
-    updateCount();
-  }
-  
-  // Intersection Observer for counter animation
-  const options = {
-    threshold: 0.5
-  };
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateCounter(entry.target);
-        observer.unobserve(entry.target); // Only animate once
-      }
-    });
-  }, options);
-  
-  counterElements.forEach(counter => {
-    // Store original value and set to 0
-    const originalValue = counter.textContent;
-    counter.textContent = '0+';
-    observer.observe(counter);
-  });
+  // REMOVED: The counter animation code that was causing problems
 }
