@@ -1,0 +1,227 @@
+/* Section Transitions and Animations */
+
+/* Base transition for sections */
+.section-transition {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animated elements within sections */
+.animate-on-visible {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.element-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Title animation */
+.title-animate {
+  animation: titleReveal 0.8s ease forwards;
+}
+
+@keyframes titleReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Service section reveal elements - MODIFIED TO SHOW BY DEFAULT */
+.reveal-element {
+  opacity: 1; /* Show by default */
+  transform: translateY(0); /* No offset by default */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.service-box:hover .reveal-element {
+  /* Just add a subtle enhancement on hover */
+  opacity: 1;
+  transform: translateY(0) scale(1.02);
+  color: rgba(255, 255, 255, 1);
+  transition-delay: 0.1s;
+}
+
+/* Section progress indicator */
+.section-progress {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 100;
+}
+
+.progress-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.progress-dot:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.2);
+}
+
+.progress-dot.active {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.progress-dot::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%) scaleX(0);
+  transform-origin: right;
+  height: 2px;
+  width: 30px;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: transform 0.3s ease;
+  opacity: 0;
+}
+
+.progress-dot:hover::after {
+  transform: translateY(-50%) scaleX(1);
+  opacity: 1;
+}
+
+/* Dramatic portfolio hover effect */
+.portfolio-img img {
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.portfolio-box:hover .portfolio-img img {
+  transform: scale(1.05);
+  filter: brightness(1.1) contrast(1.05);
+}
+
+.portfolio-caption {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.portfolio-caption i {
+  transition: transform 0.3s ease;
+}
+
+.portfolio-caption:hover i {
+  transform: translateX(5px);
+}
+
+/* Glowing effect for important elements */
+.text-gradient {
+  position: relative;
+}
+
+.text-gradient::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.text-gradient:hover::after {
+  width: 120%;
+  height: 200%;
+}
+
+/* Service box number animation */
+.service-order h3 {
+  transition: transform 0.4s ease, color 0.4s ease;
+}
+
+.service-box:hover .service-order h3 {
+  transform: scale(1.1);
+  color: var(--primary-color);
+}
+
+/* Social buttons animation */
+.button-circle {
+  position: relative;
+  overflow: hidden;
+}
+
+.button-circle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+  z-index: -1;
+  border-radius: 50%;
+}
+
+.button-circle:hover::before {
+  width: 150%;
+  height: 150%;
+}
+
+/* Animated background effects for sections */
+.bg-dark {
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-dark::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.03) 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Hero heading animation */
+.hero-heading {
+  position: relative;
+}
+
+.hero-heading::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transform: translateY(0.1em);
+  opacity: 0.1;
+  filter: blur(8px);
+}
