@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://jonathanwiguna.vercel.app/sitemap.xml
+
+# Allow search engines to crawl important pages
+Allow: /index.html
+Allow: /portfolio-single.html
+Allow: /blog-single.html
+Allow: /assets/
+
+# Disallow unimportant files
+Disallow: /components/
+Disallow: /*.md$
